@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - DB_HOST=host.docker.internal
+      - DB_PORT=3306
+      - DB_USERNAME=root
+      - DB_PASSWORD=root
+      - DB_NAME=grocery-booking
+    volumes:
+      - .:/usr/app
+      - /usr/app/node_modules
+    command: npm start
